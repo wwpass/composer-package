@@ -39,7 +39,7 @@ class Connection {
         if (strpos($spfe_addr, '://') === false) $this->spfe_addr = 'https://' . $spfe_addr;
         else $this->spfe_addr = $spfe_addr;
     }
-    
+
     private function makeGetParamsString(array $params) {
         $str = '';
         foreach ($params as $key => $value) {
@@ -48,7 +48,7 @@ class Connection {
         $str = substr($str, 0, -1);
         return $str;
     }
-    
+
     private function makeRequest($method, $command, array $data, $attempts = 3) {
         $command_url = $this->spfe_addr . '/' . $command . '.json';
         $curl_options = array(

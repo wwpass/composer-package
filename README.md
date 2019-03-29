@@ -7,7 +7,7 @@ For single-file non-composer library please refer to [https://github.com/wwpass/
 ## Installation
 
 ```bash
-$ composer require wwpass/apiclient:dev-master
+$ composer require wwpass/apiclient
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ require_once 'vendor/autoload.php';
 try {
     $wwc = new WWPass\Connection(WWPASS_KEY_FILE, WWPASS_CERT_FILE, WWPASS_CA_FILE);
     $ticket = $wwc->getTicket(WWPASS_TICKET_TTL, WWPASS_PIN_REQUIRED?'p':'');
-} catch (WWPASS\Exception $e) {
+} catch (WWPass\Exception $e) {
     echo 'Caught WWPass exception: ' . $e->getMessage();
 } catch (Exception $e) {
     echo 'Caught exception: ' . $e->getMessage();
