@@ -134,7 +134,7 @@ final class Connection
         return substr($ticket, 0, $pos);
     }
 
-    public function getTicket(array $args)
+    public function getTicket(array $args = [])
     {
         if (array_key_exists('pin', $args)) {
             $pin = $args['pin'];
