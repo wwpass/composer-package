@@ -18,8 +18,18 @@ The library defines two classes in the WWPass namespace: **WWPass\Connection** a
 require_once 'vendor/autoload.php';
 
 try {
-    $wwc = new WWPass\Connection(WWPASS_KEY_FILE, WWPASS_CERT_FILE, WWPASS_CA_FILE);
-    $ticket = $wwc->getTicket(WWPASS_TICKET_TTL, WWPASS_PIN_REQUIRED?'p':'');
+    $wwc = new WWPass\Connection(array(
+        'key_file' => WWPASS_SPFE_KEY_FILE,
+        'cert_file' => WWPASS_SPFE_CERT_FILE,
+        'ca_file' => WWPASS_SPFE_CA_FILE
+    ));
+    $response = $wwc->getTicket(array(
+        'ttl' => 300,
+        'pin' => true
+    ));
+
+    $ttl = $response['ttl'];
+    $ticket = $response['ticket'];
 } catch (WWPass\Exception $e) {
     echo 'Caught WWPass exception: ' . $e->getMessage();
 } catch (Exception $e) {
